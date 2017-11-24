@@ -33,9 +33,9 @@ font-2 = Termsynu:size=8;0
 font-3 = Siji:pixelsize=10;1
 font-4 = FontAwesome:pixelsize=11;0
 
-modules-left = i3 powermenu
+modules-left = i3
 modules-center = xwindow
-modules-right = cpu volume wireless-network wired-network battery clock
+modules-right = pkg cpuload volume wireless-network wired-network battery clock
 
 wm-restack = i3
 
@@ -237,18 +237,14 @@ type = internal/xwindow
 label-maxlen = 75
 label-foreground = #fff
 
-[module/vpn]
-type = custom/menu
+[module/cpuload]
+type = custom/script
+interval = 5
+exec = ~/.config/polybar/cpuload.sh
 
-label-open = 
-label-close = 
-label-separator = |
-
-menu-0-0 = Belgium
-menu-0-0-exec = openvpn --config /home/lauritz/Seafile/VPN/AirVPN/AirVPN_Belgium_UDP-443.ovpn
-menu-0-1 = Austria
-menu-0-1-exec = openvpn --config /home/lauritz/Seafile/VPN/AirVPN/AirVPN_Austria_UDP-443.ovpn
-menu-0-2 = Netherlands
-menu-0-2-exec = openvpn --config /home/lauritz/Seafile/VPN/AirVPN/AirVPN_Netherlands_UDP-443.ovpn
-menu-0-3 = Sweden
-menu-0-3-exec = openvpn --config /home/lauritz/Seafile/VPN/AirVPN/AirVPN_Sweden_UDP-443.ovpn
+[module/pkg]
+type = custom/script
+interval = 1200
+format = <label>
+label = "%output:0:30%"
+exec = ~/.config/polybar/pkg.sh
