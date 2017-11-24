@@ -1,0 +1,254 @@
+[colors]%name%
+accent = #FF5252
+
+[bar/top]
+enable-ipc = true
+monitor = HDMI2
+width = 100%
+height = 32
+
+background = #002B36
+foreground = #ffffff
+
+border-bottom-size = 1
+border-bottom-color = #FF5252
+
+overline-size = 0
+overline-color = #CFD8DC
+underline-size = 1
+underline-color = #CFD8DC
+
+border-top-size = 25
+border-size = 30 
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+module-margin-left = 3
+module-margin-right = 3
+
+font-0 = NotoSans-Regular:size=8;0
+font-1 = MaterialIcons:size=10;2
+font-2 = Termsynu:size=8;0
+font-3 = Siji:pixelsize=10;1
+font-4 = FontAwesome:pixelsize=11;0
+
+modules-left = i3 powermenu
+modules-center = xwindow
+modules-right = cpu volume wireless-network wired-network battery clock
+
+wm-restack = i3
+
+tray-position = right
+
+[module/fs-root]
+type = internal/fs
+mount-0 = /
+label-mounted = %{F#e60053}%percentage_used%%%{F-} used of %mountpoint%
+
+
+[module/xbacklight]
+type = internal/xbacklight
+output = eDP-1
+format = <ramp> <bar>
+
+ramp-0 = 
+ramp-0-foreground = #666
+ramp-1 = 
+ramp-1-foreground = #999
+ramp-2 = 
+ramp-2-foreground = #fff
+
+bar-width = 12
+bar-indicator = |
+bar-indicator-font = 6
+bar-indicator-foreground = #000
+bar-fill = ─
+bar-fill-font = 6
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 6
+bar-empty-foreground = #44
+
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+format = <ramp> <label>
+ramp-0 =
+ramp-1 =
+ramp-2 =
+ramp-foreground = #666
+interactive = true
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+pin-workspaces = false
+index-sort = true
+
+label-dimmed-underline = ${root.background}
+
+label-focused = %name%
+label-focused-foreground = #ffffff
+label-focused-background = #46636b
+label-focused-underline = #FF5252
+label-focused-font = 8
+label-focused-padding = 5
+
+label-unfocused = %name%
+label-unfocused-underline = #FF5252
+label-unfocused-font = 8
+label-unfocused-padding = 5
+
+label-urgent = %name%
+label-urgent-foreground = #fff
+label-urgent-background = #3edf2
+label-urgent-underline = #FF5252
+label-urgent-font = 8
+label-urgent-padding = 5
+
+label-visible = %name%
+label-visible-foreground = #fff
+label-visible-font = 8
+label-visible-padding = 5
+
+ws-icon-1 = 1;
+ws-icon-2 = 2;
+ws-icon-3 = 3;
+ws-icon-7 = 7;
+ws-icon-8 = 8;
+ws-icon-9 = 9;
+
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+
+format = <label>
+
+label = CPU %percentage%%
+label-font = 3
+label-foreground = #fff
+
+[module/memory]
+type = internal/memory
+interval = 0.2
+format = <label> <bar-used>
+
+label = RAM
+label-font = 3
+label-foreground = #99
+
+bar-used-width = 30
+bar-used-gradient = true
+bar-used-foreground-0 = #449f3d
+bar-used-foreground-1 = #2f8419
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ed5456
+bar-used-indicator = █
+bar-used-indicator-font = 5
+bar-used-indicator-foreground = #fff
+bar-used-fill = █
+bar-used-fill-font = 5
+bar-used-empty = █
+bar-used-empty-font = 5
+bar-used-empty-foreground = #44
+
+[module/wireless-network]
+type = internal/network
+interface = wlp2s0
+interval = 2.0
+ping-interval = 60
+
+format-connected = <ramp-signal> <label-connected>
+label-connected =  %essid%
+label-disconnected =
+label-disconnected-foreground = #66
+
+ramp-signal-0 =
+ramp-signal-1 = ..
+ramp-signal-2 = ...
+ramp-signal-3 = ....
+ramp-signal-4 = .....
+
+animation-packetloss-0 =
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 =
+animation-packetloss-1-foreground = ${bar/top.foreground}
+animation-packetloss-framerate = 500
+
+[module/wired-network]
+type = internal/network
+interface = ens9
+interval = 2.0
+
+label-connected = %local_ip%
+label-disconnected = Disconnected
+label-disconnected-foreground = #fff
+
+[module/clock]
+type = internal/date
+interval = 5
+format-padding = 8
+format-background = #002B36
+format-foreground = #fff
+date = %%{F#bb}%Y-%m-%d%%{F-}  %%{F#ee}%H:%M%%{F-}
+
+[module/volume]
+type = internal/volume
+format-volume =<label-volume>
+
+label-volume =   %percentage%%
+label-volume-foreground = #fff
+
+format-muted-foreground = #fff
+label-muted =   
+label-muted-foreground = #fff
+
+[module/battery]
+type = internal/battery
+full-at = 98
+format-charging = %{T3}<animation-charging> <label-charging>%{T-}
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = %{T3}<label-full>
+label-full = 
+label-charging = %percentage%% @ %consumption%w
+label-charging-font = 3
+label-discharging =  %percentage%% @ %consumption%w
+label-discharging-font = 3
+;label-full-font = 5
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+[module/xwindow]
+type = internal/xwindow
+label-maxlen = 75
+label-foreground = #fff
+
+[module/vpn]
+type = custom/menu
+
+label-open = 
+label-close = 
+label-separator = |
+
+menu-0-0 = Belgium
+menu-0-0-exec = openvpn --config /home/lauritz/Seafile/VPN/AirVPN/AirVPN_Belgium_UDP-443.ovpn
+menu-0-1 = Austria
+menu-0-1-exec = openvpn --config /home/lauritz/Seafile/VPN/AirVPN/AirVPN_Austria_UDP-443.ovpn
+menu-0-2 = Netherlands
+menu-0-2-exec = openvpn --config /home/lauritz/Seafile/VPN/AirVPN/AirVPN_Netherlands_UDP-443.ovpn
+menu-0-3 = Sweden
+menu-0-3-exec = openvpn --config /home/lauritz/Seafile/VPN/AirVPN/AirVPN_Sweden_UDP-443.ovpn
