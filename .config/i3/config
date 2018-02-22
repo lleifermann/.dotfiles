@@ -206,4 +206,4 @@ exec_always --no-startup-id sh /home/lauritz/.config/polybar/launch.sh
 exec_always --no-startup-id "compton -b -f --use-ewmh-active-win --config /home/lauritz/.config/compton/compton.conf"
 
 #Set Wallpaper
-exec_always --no-startup-id feh --bg-scale /home/lauritz/Seafile/Wallpaper/Desktop/tower.png
+exec_always --no-startup-id feh --bg-scale /home/lauritz/Seafile/Wallpaper/Desktop/azure.jpg
